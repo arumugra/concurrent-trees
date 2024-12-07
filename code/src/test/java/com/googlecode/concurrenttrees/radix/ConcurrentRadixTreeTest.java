@@ -687,6 +687,34 @@ public class ConcurrentRadixTreeTest {
     }
 
     @Test
+    public void testGetKeysForGreaterEqual() {
+        ConcurrentRadixTree<Integer> tree = new ConcurrentRadixTree<Integer>(getNodeFactory());
+        tree.put("TEST", 1);
+        tree.put("TEAM", 2);
+        tree.put("TOAST", 3);
+        tree.put("TEA", 4);
+        tree.put("COFFEE", 5);
+
+        //    ○
+        //    ├── ○ COFFEE (5)
+        //    └── ○ T
+        //        ├── ○ E
+        //        │   ├── ○ A (4)
+        //        │   │   └── ○ M (2)
+        //        │   └── ○ ST (1)
+        //        └── ○ OAST (3)
+
+        assertEquals("[COFFEE, TEA, TEAM, TEST, TOAST]", Iterables.toString(tree.getKeysGreaterThanEqualTo("")));
+        assertEquals("[COFFEE, TEA, TEAM, TEST, TOAST]", Iterables.toString(tree.getKeysGreaterThanEqualTo("C")));
+        assertEquals("[COFFEE, TEA, TEAM, TEST, TOAST]", Iterables.toString(tree.getKeysGreaterThanEqualTo("COFFEE")));
+        assertEquals("[TEA, TEAM, TEST, TOAST]", Iterables.toString(tree.getKeysGreaterThanEqualTo("COFFEES")));
+        assertEquals("[TEA, TEAM, TEST, TOAST]", Iterables.toString(tree.getKeysGreaterThanEqualTo("T")));
+        assertEquals("[TEAM, TEST, TOAST]", Iterables.toString(tree.getKeysGreaterThanEqualTo("TEAM")));
+        assertEquals("[TEST, TOAST]", Iterables.toString(tree.getKeysGreaterThanEqualTo("TEAMS")));
+        assertEquals("[TOAST]", Iterables.toString(tree.getKeysGreaterThanEqualTo("TO")));
+    }
+
+    @Test
     public void testGetClosestKeys() {
         ConcurrentRadixTree<Integer> tree = new ConcurrentRadixTree<Integer>(getNodeFactory());
         tree.put("COD", 1);
