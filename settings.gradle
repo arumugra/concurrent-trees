@@ -3,3 +3,5 @@
  */
 
 rootProject.name = 'concurrent-trees'
+include "radix-trees"
+

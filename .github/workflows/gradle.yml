@@ -7,9 +7,6 @@
 
 name: Java CI with Gradle
 
-defaults:
-  run:
-    working-directory: ./code
 on:
   push:
     branches: [ "master" ]

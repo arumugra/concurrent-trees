@@ -22,8 +22,8 @@ dependencies {
     testImplementation libs.junit.junit
 }
 
-group = 'com.googlecode.concurrent-trees'
-version = '2.6.2-SNAPSHOT'
+group = 'com.github.arumugra'
+version = '1.0-SNAPSHOT'
 description = 'Concurrent-Trees'
 
 
