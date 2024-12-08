@@ -1,4 +1,5 @@
 /**
+ * Copyright 2024-2025 Rajkumar Arumugham
  * Copyright 2012-2013 Niall Gallagher
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +22,7 @@ import com.googlecode.concurrenttrees.common.LazyIterator;
 import com.googlecode.concurrenttrees.radix.node.Node;
 import com.googlecode.concurrenttrees.radix.node.NodeFactory;
 import com.googlecode.concurrenttrees.radix.node.util.PrettyPrintable;
+import com.googlecode.concurrenttrees.radix.node.util.TreeUtil;
 
 import java.io.Serializable;
 import java.util.*;
@@ -426,6 +428,11 @@ public class ConcurrentRadixTree<O> implements RadixTree<O>, PrettyPrintable, Se
                 count++;
             }
         }
+    }
+
+    @Override
+    public Iterable<CharSequence> getKeysGreaterThanEqualTo(CharSequence key) {
+        return () -> new TreeUtil.TreeIterator<>(this,key);
     }
 
     // ------------- Helper method for put() -------------

@@ -1,6 +1,6 @@
 /**
+ * Copyright 2024-2025 Rajkumar Arumugham
  * Copyright 2012-2013 Niall Gallagher
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -159,4 +159,13 @@ public interface RadixTree<O> {
      * @return The number of keys/values stored in the tree
      */
     int size();
+
+    /**
+     * Returns a lazy iterable which returns the set of keys in the tree which are lexicographically greater than the given key.
+     * <p/>
+     *
+     * @param key A key of sought keys that are greater or equal in the tree
+     * @return The set of keys in the tree which are greater or equal to key
+     */
+    Iterable<CharSequence> getKeysGreaterThanEqualTo(CharSequence key);
 }

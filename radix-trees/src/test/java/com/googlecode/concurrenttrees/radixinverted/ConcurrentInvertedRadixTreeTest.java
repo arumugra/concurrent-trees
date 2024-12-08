@@ -220,11 +220,11 @@ public class ConcurrentInvertedRadixTreeTest {
         //        │       └── ○ ES (4)
         //        └── ○ FFEE (3)
 
-        assertEquals(new Integer(1), tree.getValueForLongestKeyPrefixing("COD"));
-        assertEquals(new Integer(2), tree.getValueForLongestKeyPrefixing("CODFISH"));
-        assertEquals(new Integer(4), tree.getValueForLongestKeyPrefixing("CODFISHES"));
-        assertEquals(new Integer(1), tree.getValueForLongestKeyPrefixing("CODFUNKY"));
-        assertEquals(new Integer(2), tree.getValueForLongestKeyPrefixing("CODFISHING"));
+        assertEquals(Integer.valueOf(1), tree.getValueForLongestKeyPrefixing("COD"));
+        assertEquals(Integer.valueOf(2), tree.getValueForLongestKeyPrefixing("CODFISH"));
+        assertEquals(Integer.valueOf(4), tree.getValueForLongestKeyPrefixing("CODFISHES"));
+        assertEquals(Integer.valueOf(1), tree.getValueForLongestKeyPrefixing("CODFUNKY"));
+        assertEquals(Integer.valueOf(2), tree.getValueForLongestKeyPrefixing("CODFISHING"));
         assertNull(tree.getValueForLongestKeyPrefixing("DOESNOTEXIST"));
         assertNull(tree.getValueForLongestKeyPrefixing("C"));
         assertNull(tree.getValueForLongestKeyPrefixing("CO"));
